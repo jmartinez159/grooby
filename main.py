@@ -66,6 +66,11 @@ def read_excel_file(file_path, sheet_name=0):
         previous_current_sheet = len(xl.sheet_names)-3    # 3rd last sheet - Previous sheet
         df_current = pd.read_excel(file_path, sheet_name=current_sheet)
         df_previous = pd.read_excel(file_path, sheet_name=previous_current_sheet)
+
+        # Convert SAP columns to integers, handling any decimal values
+        for df in [df_current, df_previous]:
+            df['SAP ORDER'] = df['SAP ORDER'].fillna(0).astype(int)
+            df['SAP CODE'] = df['SAP CODE'].fillna(0).astype(int)
         
         #Get key columns from new and previous sheets
         print(f"\nReading sheet: {xl.sheet_names[current_sheet]}")
@@ -100,15 +105,6 @@ def read_excel_file(file_path, sheet_name=0):
         wb.save(file_path)
         print(f"Successfully highlighted {len(changed_rows)} changed rows")
     
-        # Get Customer Order and SAP Order from changed rows
-        # ans = []
-        # for i in changed_rows:
-        #     keyCodes = i[1].split('-')
-        #     ans.append('-'.join(keyCodes[:2]))
-        
-        # print('Customer Order-SAP Order')
-        # for i in ans:
-        #     print(i)
 
         for i in changed_rows:
             print(i)
