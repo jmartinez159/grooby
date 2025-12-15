@@ -13,7 +13,7 @@ from index import get_changed_rows
 app = FastAPI()
 
 class ProcessRequest(BaseModel):
-    file_path: str  # <--- Matches what the frontend sends
+    file_path: str
 
 @app.get("/health")
 def health_check():

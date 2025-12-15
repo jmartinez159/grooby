@@ -1,5 +1,6 @@
 const { webUtils } = require('electron');
 
+// Logic to process the file
 async function processFile() {
     const fileInput = document.getElementById('fileInput');
     const statusArea = document.getElementById('statusArea');
@@ -39,10 +40,41 @@ async function processFile() {
     }
 }
 
-// Bind the button when the DOM is loaded to avoid inline onclick
+// UI Interaction Logic
 document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.querySelector('button');
+    const btn = document.getElementById('runBtn');
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const dropText = document.getElementById('dropText');
+
     if (btn) {
         btn.addEventListener('click', processFile);
     }
+
+    // Sync Input change to Drop Zone visual
+    fileInput.addEventListener('change', (e) => {
+        if (fileInput.files.length > 0) {
+            const fileName = fileInput.files[0].name;
+            dropText.innerText = `Selected: ${fileName}`;
+            dropZone.classList.add('has-file');
+        } else {
+            dropText.innerText = "Drag & Drop Excel File or Click to Browse";
+            dropZone.classList.remove('has-file');
+        }
+    });
+
+    // Drag & Drop Visual Feedback
+    // Note: The actual drop is handled by the input element covering the div,
+    // but these events help with styling the parent div.
+    dropZone.addEventListener('dragover', (e) => {
+        dropZone.classList.add('dragover');
+    });
+
+    dropZone.addEventListener('dragleave', (e) => {
+        dropZone.classList.remove('dragover');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        dropZone.classList.remove('dragover');
+    });
 });
