@@ -7,6 +7,6 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "electron": "^33.0.0"
+    "electron": "^39.2.7"
   }
 }
