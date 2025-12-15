@@ -1,0 +1,17 @@
+# Enforce Unix-style line endings for most files
+* text=auto eol=lf
+
+# Batch files should remain CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
