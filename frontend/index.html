@@ -131,6 +131,38 @@
             transform: translateY(0);
         }
 
+        /* =====================================================================
+         * DISABLED BUTTON STATE
+         * =====================================================================
+         * These styles provide visual feedback when the button is disabled
+         * during file processing. The reduced opacity and cursor change
+         * clearly communicate that the button is not interactive.
+         * 
+         * We use both :disabled pseudo-class and .processing class to ensure
+         * the styling works across different browser implementations.
+         * ===================================================================== */
+        button:disabled,
+        button.processing {
+            /* Reduce opacity to indicate non-interactive state */
+            opacity: 0.6;
+            
+            /* Change cursor to indicate the button is not clickable */
+            cursor: not-allowed;
+            
+            /* Remove hover transform effect when disabled */
+            transform: none;
+            
+            /* Muted gradient to reinforce disabled appearance */
+            background: linear-gradient(135deg, rgba(200, 200, 200, 0.7), rgba(180, 180, 180, 0.5));
+        }
+
+        /* Prevent hover effects when disabled */
+        button:disabled:hover,
+        button.processing:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
         .status {
             margin-top: 25px;
             padding: 15px;
