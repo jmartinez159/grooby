@@ -12,20 +12,27 @@ const PY_PORT = 8000;
 // --- 1. Python Process Management ---
 
 function startPythonSubprocess() {
-    let scriptPath = path.join(__dirname, 'backend', 'server.py');
+    let command, args;
 
     if (app.isPackaged) {
-        scriptPath = path.join(process.resourcesPath, 'backend', 'server.py');
+        // Production: spawn the bundled server.exe
+        const exePath = path.join(process.resourcesPath, 'backend', 'server.exe');
+        console.log(`Starting bundled server at: ${exePath}`);
+        command = exePath;
+        args = [];
+    } else {
+        // Development: spawn python directly
+        const scriptPath = path.join(__dirname, 'backend', 'server.py');
+        console.log(`Starting Python process at: ${scriptPath}`);
+        command = 'python';
+        args = [scriptPath];
     }
 
-    console.log(`Starting Python process at: ${scriptPath}`);
-
-    // Spawn python
-    // We use { stdio: 'pipe' } to ensure we capture the output
-    pythonProcess = spawn('python', [scriptPath]);
+    // Spawn the process
+    pythonProcess = spawn(command, args);
 
     pythonProcess.stdout.on('data', (data) => {
-        console.log(`[Python Data]: ${data}`);
+        console.log(`[Backend Data]: ${data}`);
     });
 
     pythonProcess.stderr.on('data', (data) => {
@@ -33,14 +40,14 @@ function startPythonSubprocess() {
         // Smart Filter: If it's just an INFO log, print it normally.
         // Only label it an ERROR if it doesn't look like a standard log.
         if (message.includes('INFO:')) {
-            console.log(`[Python Status]: ${message}`);
+            console.log(`[Backend Status]: ${message}`);
         } else {
-            console.error(`[Python Error]: ${message}`);
+            console.error(`[Backend Error]: ${message}`);
         }
     });
 
     pythonProcess.on('close', (code) => {
-        console.log(`Python process exited with code ${code}`);
+        console.log(`Backend process exited with code ${code}`);
     });
 }
 
