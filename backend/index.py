@@ -4,6 +4,10 @@ import os
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
+# Import our atomic file utilities for safe file operations
+# This protects against file corruption during unexpected shutdowns
+from file_utils import atomic_save_workbook
+
 # --- Configuration ---
 IGNORED_COLUMNS = ['LOT #'] 
 NOISE_THRESHOLD = 0.5 
@@ -133,8 +137,20 @@ def highlight_rows(file_path, sheet_name, indices):
             for cell in ws[excel_row]:
                 cell.fill = yellow_fill
 
-        wb.save(file_path)
-        print("File saved successfully with highlights.")
+        # =====================================================================
+        # ATOMIC SAVE: Use atomic write pattern for data protection
+        # =====================================================================
+        # Instead of wb.save(file_path) which writes directly to the file,
+        # we use atomic_save_workbook() which:
+        # 1. Writes to a temporary file in the same directory
+        # 2. Atomically renames the temp file to the target
+        #
+        # This ensures that if the application is closed during the save:
+        # - The original file is never corrupted
+        # - Either the old version or new version exists, never a partial file
+        # =====================================================================
+        atomic_save_workbook(wb, file_path)
+        print("File saved successfully with highlights (atomic write).")
         
     except Exception as e:
         print(f"Error highlighting rows: {e}")
