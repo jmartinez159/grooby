@@ -214,9 +214,10 @@ class TestIndex(unittest.TestCase):
         self.assertEqual(sigs, ['']) # Empty string for out of bounds
 
     # --- highlight_rows Tests ---
+    @patch('index.atomic_save_workbook')
     @patch('index.load_workbook')
     @patch('index.PatternFill')
-    def test_highlight_rows_success(self, mock_fill, mock_load_wb):
+    def test_highlight_rows_success(self, mock_fill, mock_load_wb, mock_atomic_save):
         mock_wb = MagicMock()
         mock_ws = MagicMock()
         mock_cell = MagicMock()
@@ -234,8 +235,8 @@ class TestIndex(unittest.TestCase):
         
         # Check workbook loaded
         mock_load_wb.assert_called_with("test.xlsx")
-        # Check save called (if successful)
-        mock_wb.save.assert_called_with("test.xlsx")
+        # Check atomic save called (not wb.save directly)
+        mock_atomic_save.assert_called_with(mock_wb, "test.xlsx")
 
     @patch('index.load_workbook')
     def test_highlight_rows_sheet_not_found(self, mock_load_wb):
