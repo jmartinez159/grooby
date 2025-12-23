@@ -1,0 +1,37 @@
+{
+    "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+    "appId": "com.groobi.app",
+    "productName": "Groobi",
+    "directories": {
+        "output": "dist",
+        "buildResources": "build"
+    },
+    "files": [
+        "main.js",
+        "frontend/**/*",
+        "package.json"
+    ],
+    "extraResources": [
+        {
+            "from": "backend/dist/server.exe",
+            "to": "backend/server.exe"
+        }
+    ],
+    "win": {
+        "target": [
+            {
+                "target": "nsis",
+                "arch": [
+                    "x64"
+                ]
+            }
+        ],
+        "icon": "build/icon.ico"
+    },
+    "nsis": {
+        "oneClick": false,
+        "allowToChangeInstallationDirectory": true,
+        "createDesktopShortcut": true,
+        "createStartMenuShortcut": true
+    }
+}
