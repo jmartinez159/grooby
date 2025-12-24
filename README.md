@@ -1,4 +1,4 @@
-# Groobi
+# Grooby
 
 > **Desktop application for automated Excel change detection and highlighting**
 
@@ -7,29 +7,23 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-Latest-009688?logo=fastapi&logoColor=white)
 ![License](https://img.shields.io/badge/License-Private-red)
 
-Groobi is a cross-platform desktop application that automatically detects and highlights changes between Excel spreadsheet sheets. Built with Electron for a beautiful native experience and Python for powerful data processing, it provides **100% local data privacy** — your files never leave your machine.
+Grooby is a cross-platform desktop application that automatically detects and highlights changes between Excel spreadsheet sheets. Built with Electron for a beautiful native experience and Python for powerful data processing, it provides **100% local data privacy** — your files never leave your machine.
 
 ---
 
-## ✨ Features
+## Features
 
-- **🔍 Automatic Change Detection** — Compares sheets within Excel files to identify modified rows
-- **🎨 Visual Highlighting** — Automatically highlights changed rows in yellow for easy review
-- **🔒 Complete Data Privacy** — All processing happens locally; no data is sent to external servers
-- **💾 Atomic File Operations** — Safe file saving prevents data corruption during unexpected shutdowns
-- **🎯 Drag & Drop Interface** — Modern glassmorphism UI with intuitive file selection
-- **🛡️ Smart Column Filtering** — Automatically ignores noisy columns that change too frequently
-- **📦 One-Click Installation** — Bundled as a standalone Windows installer
-
----
-
-## 📸 Screenshots
-
-*Groobi features a modern glassmorphism UI with animated gradient backgrounds*
+- **Automatic Change Detection** — Compares sheets within Excel files to identify modified rows
+- **Visual Highlighting** — Automatically highlights changed rows in yellow for easy review
+- **Complete Data Privacy** — All processing happens locally; no data is sent to external servers
+- **Atomic File Operations** — Safe file saving prevents data corruption during unexpected shutdowns
+- **Drag & Drop Interface** — Modern glassmorphism UI with intuitive file selection
+- **Smart Column Filtering** — Automatically ignores noisy columns that change too frequently
+- **One-Click Installation** — Bundled as a standalone Windows installer
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -41,7 +35,7 @@ Groobi is a cross-platform desktop application that automatically detects and hi
 
 ---
 
-## 📋 Prerequisites
+## Prerequisites
 
 Before you begin, ensure you have the following installed:
 
@@ -51,13 +45,13 @@ Before you begin, ensure you have the following installed:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/groobi.git
-cd groobi
+git clone https://github.com/yourusername/grooby.git
+cd grooby
 ```
 
 ### 2. Install Node.js Dependencies
@@ -92,10 +86,10 @@ This launches the Electron app, which automatically starts the Python backend se
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-groobi/
+grooby/
 ├── main.js                 # Electron main process
 ├── package.json            # Node.js dependencies and scripts
 ├── electron-builder.json   # Electron Builder configuration
@@ -122,7 +116,7 @@ groobi/
 
 ---
 
-## 📖 How It Works
+## How It Works
 
 ### Processing Flow
 
@@ -143,9 +137,9 @@ groobi/
 
 ---
 
-## 🧪 Testing
+## Testing
 
-Groobi includes comprehensive test coverage with unit and end-to-end tests.
+Grooby includes comprehensive test coverage with unit and end-to-end tests.
 
 ### Run All Tests
 
@@ -171,7 +165,7 @@ npx playwright test
 
 ---
 
-## 📦 Building for Production
+## Building for Production
 
 ### Build the Complete Application
 
@@ -189,7 +183,7 @@ npm run build
 ### Build Output
 
 After building, you'll find the installer in the `dist/` directory:
-- `Groobi Setup x.x.x.exe` — Windows NSIS installer
+- `Grooby Setup x.x.x.exe` — Windows NSIS installer
 
 ### Build Configuration
 
@@ -199,7 +193,7 @@ The build process is configured in:
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Adjustable Parameters
 
@@ -215,18 +209,18 @@ NOISE_THRESHOLD = 0.5  # 50%
 
 ---
 
-## 🔒 Security & Privacy
+## Security & Privacy
 
-Groobi is designed with privacy as a core principle:
+Grooby is designed with privacy as a core principle:
 
-- ✅ **100% Local Processing** — All data stays on your machine
-- ✅ **No Network Calls** — The application does not communicate with external servers
-- ✅ **Atomic Saves** — File operations use temp files to prevent corruption
-- ✅ **Git-Ignored Data** — Excel files are excluded from version control by default
+- **100% Local Processing** — All data stays on your machine
+- **No Network Calls** — The application does not communicate with external servers
+- **Atomic Saves** — File operations use temp files to prevent corruption
+- **Git-Ignored Data** — Excel files are excluded from version control by default
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -245,7 +239,7 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
@@ -263,18 +257,12 @@ Contributions are welcome! Please follow these steps:
 
 ---
 
-## 📄 License
+## License
 
 This project is proprietary software. All rights reserved.
 
 ---
 
-## 📞 Support
+## Support
 
-For issues and feature requests, please [open an issue](https://github.com/yourusername/groobi/issues) on GitHub.
-
----
-
-<div align="center">
-  <sub>Built with ❤️ using Electron + Python</sub>
-</div>
+For issues and feature requests, please [open an issue](https://github.com/yourusername/grooby/issues) on GitHub.
